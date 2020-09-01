@@ -17,7 +17,9 @@ Ponto2D::Ponto2D(double X, double Y)
     this->y = Y;
     this->id = this->getNextId();
 }
-Ponto2D::~Ponto2D(){
+
+Ponto2D::~Ponto2D()
+{
     --x;
 }
 //Basic getters and setters
@@ -58,8 +60,18 @@ void Ponto2D::setY(double Y)
 //Aumenta em um o valor do ID estaticamente
 int Ponto2D::getNextId()
 {
-    static int x = 0;
-    return ++x;
+    static int a = 0;
+    return ++a;
+}
+
+//sobrecarga de operadores
+Ponto2D Ponto2D::operator=(Ponto2D Ponto)
+{
+    double X, Y;
+    X = this->getX() + Ponto.getX();
+    Y = this->getY() + Ponto.getY();
+    Ponto2D retorno(X,Y);
+    return retorno;
 }
 
 //Public Methods
@@ -67,37 +79,32 @@ int Ponto2D::getNextId()
 void Ponto2D::print() const
 {
 
-    std::cout<<"Seu ponto eh: ("<<x<<","<<y<<")"<<endl;
-
+    std::cout << "Seu ponto eh: (" << x << "," << y << ")" << endl;
 }
 double Ponto2D::distToOrig()
 {
 
-    distOrg = sqrt((x*x)+(y*y));
+    distOrg = sqrt((x * x) + (y * y));
     return distOrg;
-
 }
 double Ponto2D::distTo(Ponto2D p2)
 {
 
-    dist = sqrt(((this->getX()-p2.getX())*(this->getX()-p2.getX()))+((this->getY()-p2.getY())*(this->getY()-p2.getY())));
+    dist = sqrt(((this->getX() - p2.getX()) * (this->getX() - p2.getX())) + ((this->getY() - p2.getY()) * (this->getY() - p2.getY())));
     return dist;
-
 }
-void Ponto2D::sumOf(Ponto2D p2) 
+void Ponto2D::sumOf(Ponto2D p2)
 {
 
     setX(getX() + p2.getX());
-    setY(getY() + p2.getY()); 
-
+    setY(getY() + p2.getY());
 }
 Ponto2D Ponto2D::sumOfTwoPoints(Ponto2D p2)
 {
     Ponto2D p3;
 
     p3.setX(getX() + p2.getX());
-    p3.setY(getY() + p2.getY()); 
+    p3.setY(getY() + p2.getY());
 
     return p3;
-
 }
