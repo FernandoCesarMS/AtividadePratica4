@@ -31,7 +31,7 @@ Matrix::Matrix(fstream &myFile)
     vector<string> texto;
 
     myFile.open("teste.txt", ios::in);
-    for (int i = 0; !myFile.fail(); i++)
+    for (int i = 0; !myFile.fail(); i++) // Guardando as informações do arquivo num vector de string
     {
         string str;
         getline(myFile, str);
@@ -42,7 +42,7 @@ Matrix::Matrix(fstream &myFile)
     for (int i = 0; i < texto.size() - 1; i++)
     {
         vector<double> matriz;
-        for (int j = 0; j < texto[i].size(); j++)
+        for (int j = 0; j < texto[i].size(); j++) // transformando os caracteres em int
         {
             int num;
             if (((int)texto[i][j] >= 48) && ((int)texto[i][j] <= 57))
@@ -52,13 +52,12 @@ Matrix::Matrix(fstream &myFile)
             }
         }
         m[i] = new double[matriz.size()];
-        for (int j = 0; j < matriz.size(); j++)
+        for (int j = 0; j < matriz.size(); j++) // atribuindo os numeros a matrix
         {
             this->m[i][j] = matriz[j];
         }
         this-> nCols = matriz.size();
     }
-    cout << nRows;
     myFile.close();
 }
 
