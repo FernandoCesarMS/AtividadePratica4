@@ -18,7 +18,7 @@ public:
     //constructors
     Ponto2D();
     Ponto2D(double, double);
-    //Ponto2D(const Ponto2D&);
+    Ponto2D(const Ponto2D&);
     ~Ponto2D();
 
     //basic getters and setters
@@ -28,9 +28,6 @@ public:
     void setX(double);
     void setY(double);
     void setId(int);
-
-    //sobrecarga de operadores
-    Ponto2D operator=(Ponto2D);
 
     // other methods
     void print() const;
